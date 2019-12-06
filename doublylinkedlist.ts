@@ -81,12 +81,12 @@ class DoublyLinkedList<T> {
   deleteNodeFromBack(position = 0) {
     let pointer1 = this.head;
     let index = 0;
-    let pointer2 = null;
-    while (!pointer1.next) {
+    let pointer2: Node<T>;
+    while (pointer1.next) {
       if (index === position + 1) {
         pointer2 = this.head;
       }
-      if (!pointer2) {
+      if (pointer2) {
         pointer2 = pointer2.next;
       }
       pointer1 = pointer1.next;
@@ -120,4 +120,5 @@ for (let data of testArr) {
 // testList.map(c => c ** 0.5);
 testList.insertNode(66, 2);
 testList.deleteNode(2);
+testList.deleteNodeFromBack(2);
 testList.map(c => console.log(c));
