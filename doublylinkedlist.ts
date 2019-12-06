@@ -9,7 +9,7 @@ class Node<T> {
   }
 }
 
-class DoublyLinkedList<T> {
+export class DoublyLinkedList<T> {
   head: Node<T>;
 
   insertHead(data: T) {
@@ -110,15 +110,3 @@ class DoublyLinkedList<T> {
   }
 }
 
-// !!! TEST
-const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
-const testList = new DoublyLinkedList();
-for (let data of testArr) {
-  testList.insertNode(data);
-}
-// testList.map(c => c ** 2);
-// testList.map(c => c ** 0.5);
-testList.insertNode(66, 2);
-testList.deleteNode(2);
-testList.deleteNodeFromBack(2);
-testList.map(c => console.log(c));

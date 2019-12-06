@@ -1,19 +1,19 @@
 import { test } from "https://deno.land/std/testing/mod.ts";
 import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
-import { LinkedList } from "../mod.ts";
+import { DoublyLinkedList } from "../mod.ts";
 
-test("SinglyLinkedList: insertion", () => {
+test("DoublyLinkedList:  Insertion", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
-  const testList = new LinkedList<number>();
+  const testList = new DoublyLinkedList<number>();
   for (let data of testArr) {
     testList.insertNode(data);
   }
   testList.map((c: number, i: number) => assertEquals(c, testArr[i]));
 });
 
-test("SinglyLinkedList: map operation", () => {
+test("DoublyLinkedList: Map operation", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
-  const testList = new LinkedList<number>();
+  const testList = new DoublyLinkedList<number>();
   for (let data of testArr) {
     testList.insertNode(data);
   }
@@ -21,10 +21,10 @@ test("SinglyLinkedList: map operation", () => {
   testList.map((c: number, i: number) => assertEquals(c, testArr[i] ** 2));
 });
 
-test("SinglyLinkedList: deleteNode", () => {
+test("DoublyLinkedList: deleteNode", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
   const result = [1, 2, 3, 5, 6, 78, 9, 0, 65];
-  const testList = new LinkedList<number>();
+  const testList = new DoublyLinkedList<number>();
   for (let data of testArr) {
     testList.insertNode(data);
   }
@@ -32,10 +32,10 @@ test("SinglyLinkedList: deleteNode", () => {
   testList.map((c: number, i: number) => assertEquals(c, result[i]));
 });
 
-test("SinglyLinkedList: deleteFromBack", () => {
+test("DoublyLinkedList: deleteFromBack", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
   const result = [1, 2, 3, 4, 5, 6, 9, 0, 65];
-  const testList = new LinkedList<number>();
+  const testList = new DoublyLinkedList<number>();
   for (let data of testArr) {
     testList.insertNode(data);
   }
