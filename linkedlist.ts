@@ -1,6 +1,6 @@
 export class LinkedList<T> {
   head: Node<T>;
-  
+
   insertHead(data: T) {
     if (!this.head) {
       this.head = new Node(data);
@@ -27,6 +27,10 @@ export class LinkedList<T> {
       }
     } else {
       let index = 1;
+      if(position === 0) {
+        this.insertHead(data);
+        return;
+      }
       while (current.next) {
         if (index === position) {
           let next = current.next;
@@ -81,6 +85,19 @@ export class LinkedList<T> {
       }
       current = current.next;
       index++;
+    }
+  }
+
+  // print the nodes in reverse
+  printReverse() {
+    let collector: Array<T> = [];
+    let current = this.head;
+    while (current) {
+      collector.push(current.data);
+      current = current.next;
+    }
+    for (let data of collector.reverse()) {
+      console.log(data);
     }
   }
 }
