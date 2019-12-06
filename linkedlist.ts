@@ -1,11 +1,8 @@
-export class LinkedList {
-  head: Node;
-  constructor(data = null) {
-    this.head = new Node(data);
-  }
+export class LinkedList<T> {
+  head: Node<T>;
 
-  insertHead(data) {
-    if (this.head.data === null) {
+  insertHead(data: T) {
+    if (!this.head) {
       this.head = new Node(data);
     } else {
       let temp = this.head;
@@ -15,14 +12,14 @@ export class LinkedList {
 
   // Inserts node at a position or at the end if position is not provided
   insertNode(data, position = null) {
-    if (this.head.data === null) {
+    if (!this.head) {
       this.insertHead(data);
       return;
     }
     let current = this.head;
-    if (position === null) {
-      while (current !== null) {
-        if (current.next === null) {
+    if (!position) {
+      while (current) {
+        if (!current.next) {
           current.next = new Node(data);
           break;
         }
@@ -30,7 +27,7 @@ export class LinkedList {
       }
     } else {
       let index = 1;
-      while (current.next !== null) {
+      while (current.next) {
         if (index === position) {
           let next = current.next;
           current.next = new Node(data, next);
@@ -43,10 +40,10 @@ export class LinkedList {
   }
 
   // delete node at position
-  deleteNode(position) {
+  deleteNode(position: number) {
     let index = 1;
     let current = this.head;
-    while (current.next !== null) {
+    while (current.next) {
       if (index === position) {
         current.next = current.next.next;
       }
@@ -59,12 +56,12 @@ export class LinkedList {
   deleteNodeFromBack(position = 0) {
     let pointer1 = this.head;
     let index = 0;
-    let pointer2 = null;
-    while (pointer1.next !== null) {
+    let pointer2;
+    while (pointer1.next) {
       if (index === position + 1) {
         pointer2 = this.head;
       }
-      if (pointer2 !== null) {
+      if (pointer2) {
         pointer2 = pointer2.next;
       }
       pointer1 = pointer1.next;
@@ -75,22 +72,21 @@ export class LinkedList {
   }
 
   // apply fn to every node, mutating the nodes
-  map(fn) {
+  map(fn: Function) {
     let index = 0;
     let current = this.head;
-    while (current !== null) {
+    while (current) {
       if (fn(current.data, index)) {
         current.data = fn(current.data, index);
       }
-      // console.log(current.data);
       current = current.next;
       index++;
     }
   }
 }
-class Node {
-  data;
-  next;
+class Node<T> {
+  data: T;
+  next: Node<T>;
   constructor(data, next = null) {
     this.data = data;
     this.next = next;
