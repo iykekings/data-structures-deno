@@ -2,17 +2,6 @@ import { test } from "https://deno.land/std/testing/mod.ts";
 import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 import { LinkedList } from "../mod.ts";
 
-export function assertEq(left, right, info = '') {
-  if (left !== right) {
-    console.error(`Test Failed:
-    Expected =>  ${right}
-    Got => ${left}`);
-  } else {
-    console.log(`Test: ${info} Passed`);
-  }
-}
-
-// !!! TEST Singly LinkedList
 test("Test insertion", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
   const testList = new LinkedList<number>();
@@ -20,7 +9,7 @@ test("Test insertion", () => {
     testList.insertNode(data);
   }
   testList.map((c, i) => assertEquals(c, testArr[i]));
-})
+});
 
 test("Test map operation", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
@@ -28,6 +17,30 @@ test("Test map operation", () => {
   for (let data of testArr) {
     testList.insertNode(data);
   }
-  testList.map((c: number) => c ** 2)
+  testList.map((c: number) => c ** 2);
   testList.map((c: number, i: number) => assertEquals(c, testArr[i] ** 2));
-})
+});
+
+test("Test deleteNode", () => {
+  const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
+  const result = [1, 2, 3, 5, 6, 78, 9, 0, 65];
+  const testList = new LinkedList<number>();
+  for (let data of testArr) {
+    testList.insertNode(data);
+  }
+  testList.deleteNode(3);
+  testList.map((c: number, i: number) => assertEquals(c, result[i]));
+});
+
+test("Test deleteFromBack", () => {
+  const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
+  const result = [1, 2, 3, 4, 5, 6, 9, 0, 65];
+  const testList = new LinkedList<number>();
+  for (let data of testArr) {
+    testList.insertNode(data);
+  }
+  testList.deleteNodeFromBack(3);
+  testList.map((c: number, i: number) => assertEquals(c, result[i]));
+});
+
+

@@ -1,4 +1,4 @@
-import {LinkedList} from './linkedlist.ts';
+import { LinkedList } from './linkedlist.ts';
 
 export {
   LinkedList

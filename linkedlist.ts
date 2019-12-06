@@ -1,6 +1,6 @@
 export class LinkedList<T> {
   head: Node<T>;
-
+  
   insertHead(data: T) {
     if (!this.head) {
       this.head = new Node(data);
@@ -11,7 +11,7 @@ export class LinkedList<T> {
   }
 
   // Inserts node at a position or at the end if position is not provided
-  insertNode(data, position = null) {
+  insertNode(data: T, position = null) {
     if (!this.head) {
       this.insertHead(data);
       return;
