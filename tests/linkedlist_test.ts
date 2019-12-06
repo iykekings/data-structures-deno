@@ -8,7 +8,7 @@ test("Test insertion", () => {
   for (let data of testArr) {
     testList.insertNode(data);
   }
-  testList.map((c, i) => assertEquals(c, testArr[i]));
+  testList.map((c: number, i: number) => assertEquals(c, testArr[i]));
 });
 
 test("Test map operation", () => {
