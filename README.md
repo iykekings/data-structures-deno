@@ -1,3 +1,5 @@
+![](https://github.com/iykekings/data-structures-deno/workflows/Test/badge.svg)
+
 # data-structures-js
 Popular data structures implementation in JavaScript/Typescript
 

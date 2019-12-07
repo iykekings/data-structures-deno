@@ -1,5 +1,5 @@
 import { test } from "https://deno.land/std/testing/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { assertEquals, assert } from "https://deno.land/std/testing/asserts.ts";
 import { LinkedList } from "../mod.ts";
 
 test("SinglyLinkedList: insertion", () => {
@@ -53,6 +53,31 @@ test("SinglyLinkedList: deleteFromBack", () => {
   }
   testList.deleteNodeFromBack(3);
   testList.map((c: number, i: number) => assertEquals(c, result[i]));
+});
+test("SinglyLinkedList: compareWith -> Equality", () => {
+  const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
+  const firstList = new LinkedList<number>();
+  const secondList = new LinkedList<number>();
+  for (let data of testArr) {
+    firstList.insertNode(data);
+    secondList.insertNode(data);
+  }
+  const result = firstList.compareWith(secondList);
+  assert(result);
+});
+
+test("SinglyLinkedList: compareWith -> Inequality", () => {
+  const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
+  const firstList = new LinkedList<number>();
+  const secondList = new LinkedList<number>();
+  for (let data of testArr) {
+    firstList.insertNode(data);
+  }
+  for (let data of testArr.slice(2)) {
+    secondList.insertNode(data);
+  }
+  const result = firstList.compareWith(secondList);
+  assert(!result);
 });
 
 
