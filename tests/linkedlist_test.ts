@@ -11,6 +11,28 @@ test("SinglyLinkedList: insertion", () => {
   testList.map((c: number, i: number) => assertEquals(c, testArr[i]));
 });
 
+test("SinglyLinkedList: reverse", () => {
+  const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
+  const result = [...testArr].reverse();
+  const testList = new LinkedList<number>();
+  for (let data of testArr) {
+    testList.insertNode(data);
+  }
+  testList.reverse();
+  testList.map((c: number, i: number) => assertEquals(c, result[i]));
+});
+
+test("SinglyLinkedList: reverse2", () => {
+  const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
+  const result = [...testArr].reverse();
+  const testList = new LinkedList<number>();
+  for (let data of testArr) {
+    testList.insertNode(data);
+  }
+  testList.reverse2();
+  testList.map((c: number, i: number) => assertEquals(c, result[i]));
+});
+
 test("SinglyLinkedList: map operation", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
   const testList = new LinkedList<number>();

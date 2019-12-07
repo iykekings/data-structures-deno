@@ -108,5 +108,18 @@ export class DoublyLinkedList<T> {
       index++;
     }
   }
+
+  // print the nodes in reverse
+  printReverse() {
+    let collector: Array<T> = [];
+    let current = this.head;
+    while (current) {
+      collector.push(current.data);
+      current = current.next;
+    }
+    for (let data of collector.reverse()) {
+      console.log(data);
+    }
+  }
 }
 

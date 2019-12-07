@@ -100,6 +100,29 @@ export class LinkedList<T> {
       console.log(data);
     }
   }
+
+  reverse() {
+    let current = this.head;
+    while(current) {
+      this.head = current.next;
+      let nextNode = this.head.next;
+      current.next = nextNode;
+      this.head.next = current;
+      current = nextNode;
+    }
+  }
+
+  reverse2() {
+    let current = this.head;
+    let prevNode: Node<T>;
+    while(current) {
+      let temp = current.next;
+      current.next = prevNode;
+      prevNode = current;
+      current = temp
+    }
+    this.head = prevNode;
+  }
 }
 class Node<T> {
   data: T;
