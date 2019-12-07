@@ -11,7 +11,7 @@ export class LinkedList<T> {
   }
 
   // Inserts node at a position or at the end if position is not provided
-  insertNode(data: T, position = null) {
+  insertNode(data: T, position: number = null) {
     if (!this.head) {
       this.insertHead(data);
       return;
@@ -111,6 +111,18 @@ export class LinkedList<T> {
       current = temp
     }
     this.head = prevNode;
+  }
+
+  compareWith(list: LinkedList<T>): boolean {
+    let current1 = this.head;
+    let current2 = list.head;
+    while(current1 && current2) {
+      if(current1.data !== current2.data) return false;
+      if((current1.next && !current2.next) && (!current1.next && current2.next)) return false;
+      current1 = current1.next;
+      current2 = current2.next;
+    }
+    return true
   }
 }
 class Node<T> {
