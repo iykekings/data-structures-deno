@@ -103,17 +103,6 @@ export class LinkedList<T> {
 
   reverse() {
     let current = this.head;
-    while(current) {
-      this.head = current.next;
-      let nextNode = this.head.next;
-      current.next = nextNode;
-      this.head.next = current;
-      current = nextNode;
-    }
-  }
-
-  reverse2() {
-    let current = this.head;
     let prevNode: Node<T>;
     while(current) {
       let temp = current.next;
