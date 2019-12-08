@@ -79,7 +79,7 @@ test("SinglyLinkedList: compareWith -> Inequality", () => {
   assert(!result);
 });
 
-test("SinglyLinkedList: sort", () => {
+test("SinglyLinkedList: sort -> Without callback fn", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
   const result = [0, 1, 2, 3, 4, 5, 6, 9, 65, 78];
   const testList = new LinkedList<number>();
@@ -87,5 +87,26 @@ test("SinglyLinkedList: sort", () => {
     testList.insertNode(data);
   }
   testList.sort();
+  testList.map((data: number, i: number) => assertEquals(data, result[i]));
+});
+test("SinglyLinkedList: sort -> Ascending", () => {
+  const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
+  const result = [0, 1, 2, 3, 4, 5, 6, 9, 65, 78];
+  const testList = new LinkedList<number>();
+  for (let data of testArr) {
+    testList.insertNode(data);
+  }
+  testList.sort((a, b) => a < b);
+  testList.map((data: number, i: number) => assertEquals(data, result[i]));
+});
+
+test("SinglyLinkedList: sort -> Descending", () => {
+  const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
+  const result = [ 78, 65, 9, 6, 5, 4, 3, 2, 1, 0 ];
+  const testList = new LinkedList<number>();
+  for (let data of testArr) {
+    testList.insertNode(data);
+  }
+  testList.sort((a, b) => a > b);
   testList.map((data: number, i: number) => assertEquals(data, result[i]));
 });

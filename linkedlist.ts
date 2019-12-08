@@ -1,3 +1,4 @@
+type SortFunction<S> = (data1: S, data2: S) => boolean;
 export class LinkedList<T> {
   head: Node<T>;
 
@@ -126,13 +127,19 @@ export class LinkedList<T> {
     return true;
   }
 
-  sort() {
+  sort(fn?: SortFunction<T>) {
     let pointer1 = this.head;
     while (pointer1) {
       let pointer2 = this.head;
       while (pointer2) {
-        if (pointer1.data < pointer2.data) {
-          pointer1.swap(pointer2);
+        if(fn) {
+          if (fn(pointer1.data, pointer2.data)) {
+            pointer1.swap(pointer2);
+          }
+        } else {
+          if (pointer1.data < pointer2.data) {
+            pointer1.swap(pointer2);
+          }
         }
         pointer2 = pointer2.next;
       }

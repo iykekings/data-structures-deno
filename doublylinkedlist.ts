@@ -43,15 +43,11 @@ export class DoublyLinkedList<T> {
       let index = 1;
       while (current.next) {
         if (index === position) {
-          // node.prev = current
           node.prev = current;
           if (current.next) {
-            // node.next = current.next.next
             node.next = current.next;
-            // set current.next.prev to node if it exists
             node.next.prev = node;
           }
-          // set current.next to node
           current.next = node;
           break;
         }
@@ -60,6 +56,32 @@ export class DoublyLinkedList<T> {
       }
     }
   }
+
+  // Insert in sorted position 
+  sortedInsert(data: T) {
+    if(!this.head) {
+        this.head =  new Node(data);
+    } else if( this.head.data >= data) {
+        let newNode = new Node(data, this.head);
+        newNode.next.prev = newNode
+    } else {
+        let current = this.head;
+        while(current !== null) { 
+            if(current.data <= data && !current.next) {
+                let newNode = new Node(data, current.next, current);
+                current.next = newNode
+                break;
+            } 
+            if(current.data <= data && current.next.data >= data) {
+                let newNode = new Node(data, current.next, current);
+                current.next.prev = newNode;
+                current.next = newNode
+                break;
+            }
+            current = current.next;
+        }
+    }
+}
 
   // delete node at position
   deleteNode(position) {
