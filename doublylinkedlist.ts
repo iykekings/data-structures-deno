@@ -23,7 +23,7 @@ export class DoublyLinkedList<T> {
   }
 
   // Inserts node at a position or at the end if position is not provided
-  insertNode(data, position = null) {
+  insertNode(data: T, position?: number) {
     if (!this.head) {
       this.insertHead(data);
       return;
@@ -84,7 +84,7 @@ export class DoublyLinkedList<T> {
 }
 
   // delete node at position
-  deleteNode(position) {
+  deleteNode(position: number) {
     let index = 1;
     let current = this.head;
     while (current.next) {
@@ -119,7 +119,7 @@ export class DoublyLinkedList<T> {
   }
 
   // apply fn to every node, mutating the nodes
-  map(fn) {
+  map(fn: (data: T, index: number) => any) {
     let index = 0;
     let current = this.head;
     while (current !== null) {

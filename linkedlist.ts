@@ -12,7 +12,7 @@ export class LinkedList<T> {
   }
 
   // Inserts node at a position or at the end if position is not provided
-  insertNode(data: T, position: number = null) {
+  insertNode(data: T, position?: number) {
     if (!this.head) {
       this.insertHead(data);
       return;
@@ -77,7 +77,7 @@ export class LinkedList<T> {
   }
 
   // apply fn to every node, mutating the nodes
-  map(fn: Function) {
+  map(fn: (data: T, index: number) => any) {
     let index = 0;
     let current = this.head;
     while (current) {
