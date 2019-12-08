@@ -22,7 +22,6 @@ test("SinglyLinkedList: reverse", () => {
   testList.map((c: number, i: number) => assertEquals(c, result[i]));
 });
 
-
 test("SinglyLinkedList: map operation", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
   const testList = new LinkedList<number>();
@@ -80,4 +79,13 @@ test("SinglyLinkedList: compareWith -> Inequality", () => {
   assert(!result);
 });
 
-
+test("SinglyLinkedList: sort", () => {
+  const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
+  const result = [0, 1, 2, 3, 4, 5, 6, 9, 65, 78];
+  const testList = new LinkedList<number>();
+  for (let data of testArr) {
+    testList.insertNode(data);
+  }
+  testList.sort();
+  testList.map((data: number, i: number) => assertEquals(data, result[i]));
+});

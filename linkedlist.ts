@@ -27,7 +27,7 @@ export class LinkedList<T> {
       }
     } else {
       let index = 1;
-      if(position === 0) {
+      if (position === 0) {
         this.insertHead(data);
         return;
       }
@@ -104,11 +104,11 @@ export class LinkedList<T> {
   reverse() {
     let current = this.head;
     let prevNode: Node<T>;
-    while(current) {
+    while (current) {
       let temp = current.next;
       current.next = prevNode;
       prevNode = current;
-      current = temp
+      current = temp;
     }
     this.head = prevNode;
   }
@@ -116,20 +116,41 @@ export class LinkedList<T> {
   compareWith(list: LinkedList<T>): boolean {
     let current1 = this.head;
     let current2 = list.head;
-    while(current1 && current2) {
-      if(current1.data !== current2.data) return false;
-      if((current1.next && !current2.next) && (!current1.next && current2.next)) return false;
+    while (current1 && current2) {
+      if (current1.data !== current2.data) return false;
+      if (current1.next && !current2.next && (!current1.next && current2.next))
+        return false;
       current1 = current1.next;
       current2 = current2.next;
     }
-    return true
+    return true;
+  }
+
+  sort() {
+    let pointer1 = this.head;
+    while (pointer1) {
+      let pointer2 = this.head;
+      while (pointer2) {
+        if (pointer1.data < pointer2.data) {
+          pointer1.swap(pointer2);
+        }
+        pointer2 = pointer2.next;
+      }
+      pointer1 = pointer1.next;
+    }
   }
 }
 class Node<T> {
   data: T;
   next: Node<T>;
-  constructor(data: T, next = null) {
+  constructor(data: T, next?: Node<T>) {
     this.data = data;
     this.next = next;
+  }
+
+  swap(other: Node<T>) {
+    let temp = this.data;
+    this.data = other.data;
+    other.data = temp;
   }
 }

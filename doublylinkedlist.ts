@@ -68,8 +68,8 @@ export class DoublyLinkedList<T> {
     while (current.next) {
       if (index === position) {
         current.next = current.next.next;
-        if(current.next) {
-          current.next.prev = current
+        if (current.next) {
+          current.next.prev = current;
         }
       }
       current = current.next;
@@ -122,4 +122,3 @@ export class DoublyLinkedList<T> {
     }
   }
 }
-

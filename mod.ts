@@ -1,7 +1,4 @@
-import { LinkedList } from './linkedlist.ts';
-import { DoublyLinkedList } from './doublylinkedlist.ts';
+import { LinkedList } from "./linkedlist.ts";
+import { DoublyLinkedList } from "./doublylinkedlist.ts";
 
-export {
-  LinkedList,
-  DoublyLinkedList
-}
+export { LinkedList, DoublyLinkedList };

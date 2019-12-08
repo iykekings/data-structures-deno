@@ -42,5 +42,3 @@ test("DoublyLinkedList: deleteFromBack", () => {
   testList.deleteNodeFromBack(3);
   testList.map((c: number, i: number) => assertEquals(c, result[i]));
 });
-
-
