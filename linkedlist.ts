@@ -119,7 +119,7 @@ export class LinkedList<T> {
     let current2 = list.head;
     while (current1 && current2) {
       if (current1.data !== current2.data) return false;
-      if (current1.next && !current2.next && (!current1.next && current2.next))
+      if (current1.next && !current2.next && !current1.next && current2.next)
         return false;
       current1 = current1.next;
       current2 = current2.next;
@@ -132,7 +132,7 @@ export class LinkedList<T> {
     while (pointer1) {
       let pointer2 = this.head;
       while (pointer2) {
-        if(fn) {
+        if (fn) {
           if (fn(pointer1.data, pointer2.data)) {
             pointer1.swap(pointer2);
           }
@@ -148,12 +148,7 @@ export class LinkedList<T> {
   }
 }
 class Node<T> {
-  data: T;
-  next: Node<T>;
-  constructor(data: T, next?: Node<T>) {
-    this.data = data;
-    this.next = next;
-  }
+  constructor(public data: T, public next?: Node<T>) {}
 
   swap(other: Node<T>) {
     let temp = this.data;

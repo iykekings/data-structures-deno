@@ -102,7 +102,7 @@ test("SinglyLinkedList: sort -> Ascending", () => {
 
 test("SinglyLinkedList: sort -> Descending", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
-  const result = [ 78, 65, 9, 6, 5, 4, 3, 2, 1, 0 ];
+  const result = [78, 65, 9, 6, 5, 4, 3, 2, 1, 0];
   const testList = new LinkedList<number>();
   for (let data of testArr) {
     testList.insertNode(data);

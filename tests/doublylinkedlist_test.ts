@@ -54,3 +54,14 @@ test("DoublyLinkedList: deleteFromBack", () => {
   testList.deleteNodeFromBack(3);
   testList.map((c: number, i: number) => assertEquals(c, result[i]));
 });
+
+test("DoublyLinkedList: Reverse", () => {
+  const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
+  const result = [...testArr].reverse();
+  const testList = new DoublyLinkedList<number>();
+  for (let data of testArr) {
+    testList.insertNode(data);
+  }
+  testList.reverse();
+  testList.map((c: number, i: number) => assertEquals(c, result[i]));
+});

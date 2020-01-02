@@ -1,16 +1,25 @@
 class Node<T> {
-  data: T;
-  next: Node<T>;
-  prev: Node<T>;
-  constructor(data: T, next = null, prev = null) {
-    this.data = data;
-    this.next = next;
-    this.prev = prev;
+  constructor(public data: T, public next?: Node<T>, public prev?: Node<T>) {}
+  swap(other: Node<T>) {
+    let temp = this.data;
+    this.data = other.data;
+    other.data = temp;
+  }
+  insertAfter(value: T) {
+    let next = this.next;
+    this.next = new Node(value, next, this);
+    if(next) next.prev = this.next;
+  }
+  insertBefore(value: T) {
+    let prev = this.prev;
+    this.prev = new Node(value, this, prev);
+    if(prev) prev.next = this.prev;
   }
 }
 
 export class DoublyLinkedList<T> {
   head: Node<T>;
+  tail: Node<T>;
 
   insertHead(data: T) {
     if (!this.head) {
@@ -57,31 +66,31 @@ export class DoublyLinkedList<T> {
     }
   }
 
-  // Insert in sorted position 
+  // Insert in sorted position
   sortedInsert(data: T) {
-    if(!this.head) {
-        this.head =  new Node(data);
-    } else if( this.head.data >= data) {
-        let newNode = new Node(data, this.head);
-        newNode.next.prev = newNode
+    if (!this.head) {
+      this.head = new Node(data);
+    } else if (this.head.data >= data) {
+      let newNode = new Node(data, this.head);
+      newNode.next.prev = newNode;
     } else {
-        let current = this.head;
-        while(current !== null) { 
-            if(current.data <= data && !current.next) {
-                let newNode = new Node(data, current.next, current);
-                current.next = newNode
-                break;
-            } 
-            if(current.data <= data && current.next.data >= data) {
-                let newNode = new Node(data, current.next, current);
-                current.next.prev = newNode;
-                current.next = newNode
-                break;
-            }
-            current = current.next;
+      let current = this.head;
+      while (current !== null) {
+        if (current.data <= data && !current.next) {
+          let newNode = new Node(data, current.next, current);
+          current.next = newNode;
+          break;
         }
+        if (current.data <= data && current.next.data >= data) {
+          let newNode = new Node(data, current.next, current);
+          current.next.prev = newNode;
+          current.next = newNode;
+          break;
+        }
+        current = current.next;
+      }
     }
-}
+  }
 
   // delete node at position
   deleteNode(position: number) {
@@ -122,7 +131,7 @@ export class DoublyLinkedList<T> {
   map(fn: (data: T, index: number) => any) {
     let index = 0;
     let current = this.head;
-    while (current !== null) {
+    while (current) {
       if (fn(current.data, index)) {
         current.data = fn(current.data, index);
       }
@@ -142,5 +151,18 @@ export class DoublyLinkedList<T> {
     for (let data of collector.reverse()) {
       console.log(data);
     }
+  }
+
+  // reverse
+  reverse() {
+    let current = this.head;
+    let prevNode: Node<T>;
+    while (current) {
+      let temp = current.next;
+      current.next = prevNode;
+      prevNode = current;
+      current = temp;
+    }
+    this.head = prevNode;
   }
 }
