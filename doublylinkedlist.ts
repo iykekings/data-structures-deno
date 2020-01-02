@@ -40,24 +40,32 @@ export class DoublyLinkedList<T> {
     }
   }
 
+  insertTail(data: T) {
+    let newNode = new Node(data);
+    this.length += 1;
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else if(!this.tail){
+      this.tail = newNode;
+    } else {
+      newNode.prev = this.tail
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+  }
+
   // Inserts node at a position or at the end if position is not provided
   insertNode(data: T, position?: number) {
     if (!this.head) {
       this.insertHead(data);
       return;
     }
-    let node = new Node(data);
-    let current = this.head;
     if (!position) {
-      while (current) {
-        if (!current.next) {
-          node.prev = current;
-          current.next = node;
-          break;
-        }
-        current = current.next;
-      }
+      this.insertTail(data)
     } else {
+      let node = new Node(data);
+      let current = this.head;
       let index = 1;
       while (current.next) {
         if (index === position) {
@@ -65,6 +73,8 @@ export class DoublyLinkedList<T> {
           if (current.next) {
             node.next = current.next;
             node.next.prev = node;
+          } else {
+            this.tail = node;
           }
           current.next = node;
           break;
@@ -117,23 +127,38 @@ export class DoublyLinkedList<T> {
     }
   }
 
-  // Getting a node at an index from the back in O(n)
+  // // Getting a node at an index from the back in O(n)
+  // deleteNodeFromBack(position = 0) {
+  //   let pointer1 = this.head;
+  //   let index = 0;
+  //   let pointer2: Node<T>;
+  //   while (pointer1.next) {
+  //     if (index === position + 1) {
+  //       pointer2 = this.head;
+  //     }
+  //     if (pointer2) {
+  //       pointer2 = pointer2.next;
+  //     }
+  //     pointer1 = pointer1.next;
+  //     index++;
+  //   }
+  //   // delete node
+  //   pointer2.next = pointer2.next.next;
+  // }
   deleteNodeFromBack(position = 0) {
-    let pointer1 = this.head;
+    let pointer = this.tail;
     let index = 0;
-    let pointer2: Node<T>;
-    while (pointer1.next) {
-      if (index === position + 1) {
-        pointer2 = this.head;
+    while (pointer.prev) {
+      if (index === position) {
+        pointer.prev.next = pointer.next;
+        if(pointer.next) {
+          pointer.next.prev = pointer.prev;
+        }
+        break;
       }
-      if (pointer2) {
-        pointer2 = pointer2.next;
-      }
-      pointer1 = pointer1.next;
+      pointer = pointer.prev;
       index++;
     }
-    // delete node
-    pointer2.next = pointer2.next.next;
   }
 
   // apply fn to every node, mutating the nodes
