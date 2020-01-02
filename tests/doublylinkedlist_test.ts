@@ -1,6 +1,4 @@
-import { test } from "https://deno.land/std/testing/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
-import { DoublyLinkedList } from "../mod.ts";
+import { DoublyLinkedList, assertEquals, test } from "../mod.ts";
 
 test("DoublyLinkedList:  Insertion", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];

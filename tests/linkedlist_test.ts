@@ -1,6 +1,4 @@
-import { test } from "https://deno.land/std/testing/mod.ts";
-import { assertEquals, assert } from "https://deno.land/std/testing/asserts.ts";
-import { LinkedList } from "../mod.ts";
+import { LinkedList, test, assertEquals, assert } from "../mod.ts";
 
 test("SinglyLinkedList: insertion", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
