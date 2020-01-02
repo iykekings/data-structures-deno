@@ -1,33 +1,42 @@
 class Node<T> {
+
   constructor(public data: T, public next?: Node<T>, public prev?: Node<T>) {}
+
   swap(other: Node<T>) {
     let temp = this.data;
     this.data = other.data;
     other.data = temp;
   }
+
   insertAfter(value: T) {
     let next = this.next;
     this.next = new Node(value, next, this);
     if(next) next.prev = this.next;
   }
+
   insertBefore(value: T) {
     let prev = this.prev;
     this.prev = new Node(value, this, prev);
     if(prev) prev.next = this.prev;
   }
+
 }
 
 export class DoublyLinkedList<T> {
   head: Node<T>;
   tail: Node<T>;
+  length = 0;
 
   insertHead(data: T) {
-    if (!this.head) {
-      this.head = new Node(data);
+    let newNode = new Node(data);
+    this.length += 1;
+    if (!this.head && !this.tail) {
+      this.head = newNode;
+      this.tail = newNode;
     } else {
-      let next = this.head;
-      this.head = new Node(data, next);
-      next.prev = this.head;
+      newNode.next = this.head
+      this.head.prev = newNode;
+      this.head = newNode;
     }
   }
 
