@@ -39,6 +39,30 @@ export class DoublyLinkedList<T> {
       this.head = newNode;
     }
   }
+  removeHead() {
+    if (!this.head) {
+      return null;
+    } else {
+      this.length -= 1;
+      let value = this.head.data;
+      let newHead = this.head.next;
+      newHead.prev = null;
+      this.head = newHead;
+      return value;
+    }
+  }
+  removeTail() {
+    if (!this.head || !this.tail) {
+      return null;
+    } else {
+      this.length -= 1;
+      let value = this.tail.data;
+      let newTail = this.tail.prev;
+      newTail.next = null;
+      this.tail = newTail;
+      return value;
+    }
+  }
 
   insertTail(data: T) {
     let newNode = new Node(data);
@@ -57,6 +81,7 @@ export class DoublyLinkedList<T> {
 
   // Inserts node at a position or at the end if position is not provided
   insertNode(data: T, position?: number) {
+    this.length += 1;
     if (!this.head) {
       this.insertHead(data);
       return;
@@ -87,6 +112,7 @@ export class DoublyLinkedList<T> {
 
   // Insert in sorted position
   sortedInsert(data: T) {
+    this.length++;
     if (!this.head) {
       this.head = new Node(data);
     } else if (this.head.data >= data) {
@@ -117,6 +143,7 @@ export class DoublyLinkedList<T> {
     let current = this.head;
     while (current.next) {
       if (index === position) {
+        this.length--;
         current.next = current.next.next;
         if (current.next) {
           current.next.prev = current;
@@ -150,6 +177,7 @@ export class DoublyLinkedList<T> {
     let index = 0;
     while (pointer.prev) {
       if (index === position) {
+        this.length--;
         pointer.prev.next = pointer.next;
         if(pointer.next) {
           pointer.next.prev = pointer.prev;

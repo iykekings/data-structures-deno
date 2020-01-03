@@ -1,4 +1,4 @@
-class Queue<T> {
+export class Queue<T> {
   storage: Array<T> = [];
   size() {
     return this.storage.length;

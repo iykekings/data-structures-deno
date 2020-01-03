@@ -2,5 +2,8 @@ import { test } from "https://deno.land/std/testing/mod.ts";
 import { assertEquals, assert } from "https://deno.land/std/testing/asserts.ts";
 import { LinkedList } from "./linkedlist.ts";
 import { DoublyLinkedList } from "./doublylinkedlist.ts";
+import { Stack } from './stack.ts';
+import { Queue } from "./queue.ts";
+import { DllQueue, DllStack } from "./dll_stack_and_queue.ts";
 
-export { LinkedList, DoublyLinkedList, test, assert, assertEquals };
+export { LinkedList, DoublyLinkedList, test, assert, assertEquals, Stack, Queue, DllQueue, DllStack };
