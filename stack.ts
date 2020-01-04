@@ -7,7 +7,6 @@ export class Stack<T> {
     this.storage.push(value);
   }
   pop() {
-    this.storage.pop()
+    this.storage.pop();
   }
 }
-

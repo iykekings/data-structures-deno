@@ -7,6 +7,6 @@ export class Queue<T> {
     this.storage.push(value);
   }
   deqeue() {
-    this.storage.splice(0, 1);
+    if(this.size() > 0) return this.storage.splice(0, 1)[0];
   }
 }

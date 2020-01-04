@@ -1,4 +1,4 @@
-import { DoublyLinkedList } from './doublylinkedlist.ts';
+import { DoublyLinkedList } from "./doublylinkedlist.ts";
 
 export class DllQueue<T> {
   storage = new DoublyLinkedList<T>();
@@ -6,10 +6,10 @@ export class DllQueue<T> {
     return this.storage.length;
   }
   enqeue(value: T) {
-    this.storage.insertTail(value);
+      this.storage.insertTail(value);
   }
   deqeue() {
-    return this.storage.removeHead();
+    if(this.size() > 0) return this.storage.removeHead();
   }
 }
 
