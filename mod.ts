@@ -1,4 +1,3 @@
-import { test } from "https://deno.land/std/testing/mod.ts";
 import { assertEquals, assert } from "https://deno.land/std/testing/asserts.ts";
 import { LinkedList } from "./linkedlist.ts";
 import { DoublyLinkedList } from "./doublylinkedlist.ts";
@@ -10,12 +9,11 @@ import { BinarySearchTree } from "./binary_search_tree.ts";
 export {
   LinkedList,
   DoublyLinkedList,
-  test,
   assert,
   assertEquals,
   Stack,
   Queue,
   DllQueue,
   DllStack,
-  BinarySearchTree
+  BinarySearchTree,
 };

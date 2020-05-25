@@ -1,6 +1,6 @@
-import { test, DllStack, assert, DllQueue } from "../mod.ts";
+import { DllStack, assert, DllQueue } from "../mod.ts";
 
-test("DllStack: correct size after push and pop", () => {
+Deno.test("DllStack: correct size after push and pop", () => {
   const dllstack = new DllStack<number>();
   assert(dllstack.size() === 0);
   dllstack.pop();
@@ -18,7 +18,7 @@ test("DllStack: correct size after push and pop", () => {
   dllstack.push(18);
   assert(dllstack.size() === 9);
 });
-test("DllStack: pops correctly", () => {
+Deno.test("DllStack: pops correctly", () => {
   const dllstack = new DllStack<number>();
   dllstack.push(2);
   dllstack.push(4);
@@ -35,7 +35,7 @@ test("DllStack: pops correctly", () => {
   assert(dllstack.pop() === 18);
   assert(dllstack.size() === 6);
 });
-test("DllQueue: correct size after enqueue and dequeue", () => {
+Deno.test("DllQueue: correct size after enqueue and dequeue", () => {
   const queue = new DllQueue<number>();
   assert(queue.size() === 0);
   queue.deqeue();
@@ -53,7 +53,7 @@ test("DllQueue: correct size after enqueue and dequeue", () => {
   queue.enqeue(18);
   assert(queue.size() === 9);
 });
-test("DllQueue: dequeues correctly", () => {
+Deno.test("DllQueue: dequeues correctly", () => {
   const dllqueue = new DllQueue<number>();
   dllqueue.enqeue(2);
   dllqueue.enqeue(4);

@@ -1,6 +1,6 @@
-import { Stack, test, assert, assertEquals, Queue } from "../mod.ts";
+import { Stack, assert, assertEquals, Queue } from "../mod.ts";
 
-test("Stack: should insert values to stack", () => {
+Deno.test("Stack: should insert values to stack", () => {
   let stack = new Stack<number>();
   stack.push(1);
   stack.push(2);
@@ -8,7 +8,7 @@ test("Stack: should insert values to stack", () => {
   assertEquals(stack.storage, [1, 2]);
 });
 
-test("Stack: should pop values from stack", () => {
+Deno.test("Stack: should pop values from stack", () => {
   let stack = new Stack<number>();
   stack.push(1);
   stack.push(2);
@@ -17,7 +17,7 @@ test("Stack: should pop values from stack", () => {
   assert(stack.size() === 1);
 });
 
-test("Queue: should enqueue values", () => {
+Deno.test("Queue: should enqueue values", () => {
   let queue = new Queue<number>();
   queue.enqeue(1);
   queue.enqeue(2);
@@ -25,7 +25,7 @@ test("Queue: should enqueue values", () => {
   assert(queue.size() === 2);
 });
 
-test("Queue: should dequeue values", () => {
+Deno.test("Queue: should dequeue values", () => {
   let queue = new Queue<number>();
   queue.enqeue(1);
   queue.enqeue(2);

@@ -1,6 +1,6 @@
-import { LinkedList, test, assertEquals, assert } from "../mod.ts";
+import { LinkedList, assertEquals, assert } from "../mod.ts";
 
-test("SinglyLinkedList: insertion", () => {
+Deno.test("SinglyLinkedList: insertion", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
   const testList = new LinkedList<number>();
   for (let data of testArr) {
@@ -9,7 +9,7 @@ test("SinglyLinkedList: insertion", () => {
   testList.map((c: number, i: number) => assertEquals(c, testArr[i]));
 });
 
-test("SinglyLinkedList: reverse", () => {
+Deno.test("SinglyLinkedList: reverse", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
   const result = [...testArr].reverse();
   const testList = new LinkedList<number>();
@@ -20,7 +20,7 @@ test("SinglyLinkedList: reverse", () => {
   testList.map((c: number, i: number) => assertEquals(c, result[i]));
 });
 
-test("SinglyLinkedList: map operation", () => {
+Deno.test("SinglyLinkedList: map operation", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
   const testList = new LinkedList<number>();
   for (let data of testArr) {
@@ -30,7 +30,7 @@ test("SinglyLinkedList: map operation", () => {
   testList.map((c: number, i: number) => assertEquals(c, testArr[i] ** 2));
 });
 
-test("SinglyLinkedList: deleteNode", () => {
+Deno.test("SinglyLinkedList: deleteNode", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
   const result = [1, 2, 3, 5, 6, 78, 9, 0, 65];
   const testList = new LinkedList<number>();
@@ -41,7 +41,7 @@ test("SinglyLinkedList: deleteNode", () => {
   testList.map((c: number, i: number) => assertEquals(c, result[i]));
 });
 
-test("SinglyLinkedList: deleteFromBack", () => {
+Deno.test("SinglyLinkedList: deleteFromBack", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
   const result = [1, 2, 3, 4, 5, 6, 9, 0, 65];
   const testList = new LinkedList<number>();
@@ -51,7 +51,7 @@ test("SinglyLinkedList: deleteFromBack", () => {
   testList.deleteNodeFromBack(3);
   testList.map((c: number, i: number) => assertEquals(c, result[i]));
 });
-test("SinglyLinkedList: compareWith -> Equality", () => {
+Deno.test("SinglyLinkedList: compareWith -> Equality", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
   const firstList = new LinkedList<number>();
   const secondList = new LinkedList<number>();
@@ -63,7 +63,7 @@ test("SinglyLinkedList: compareWith -> Equality", () => {
   assert(result);
 });
 
-test("SinglyLinkedList: compareWith -> Inequality", () => {
+Deno.test("SinglyLinkedList: compareWith -> Inequality", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
   const firstList = new LinkedList<number>();
   const secondList = new LinkedList<number>();
@@ -77,7 +77,7 @@ test("SinglyLinkedList: compareWith -> Inequality", () => {
   assert(!result);
 });
 
-test("SinglyLinkedList: sort -> Without callback fn", () => {
+Deno.test("SinglyLinkedList: sort -> Without callback fn", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
   const result = [0, 1, 2, 3, 4, 5, 6, 9, 65, 78];
   const testList = new LinkedList<number>();
@@ -87,7 +87,7 @@ test("SinglyLinkedList: sort -> Without callback fn", () => {
   testList.sort();
   testList.map((data: number, i: number) => assertEquals(data, result[i]));
 });
-test("SinglyLinkedList: sort -> Ascending", () => {
+Deno.test("SinglyLinkedList: sort -> Ascending", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
   const result = [0, 1, 2, 3, 4, 5, 6, 9, 65, 78];
   const testList = new LinkedList<number>();
@@ -98,7 +98,7 @@ test("SinglyLinkedList: sort -> Ascending", () => {
   testList.map((data: number, i: number) => assertEquals(data, result[i]));
 });
 
-test("SinglyLinkedList: sort -> Descending", () => {
+Deno.test("SinglyLinkedList: sort -> Descending", () => {
   const testArr = [1, 2, 3, 4, 5, 6, 78, 9, 0, 65];
   const result = [78, 65, 9, 6, 5, 4, 3, 2, 1, 0];
   const testList = new LinkedList<number>();

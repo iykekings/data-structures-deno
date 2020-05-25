@@ -1,15 +1,15 @@
-import { BinarySearchTree, test, assert, assertEquals } from "../mod.ts";
+import { BinarySearchTree, assert, assertEquals } from "../mod.ts";
 
-test("BST: should insert values correctly", () => {
+Deno.test("BST: should insert values correctly", () => {
   const bst = new BinarySearchTree<number>(5);
   bst.insert(2);
   bst.insert(3);
   bst.insert(7);
   bst.insert(6);
-  assertEquals(bst.left.right.value, 3);
-  assertEquals(bst.right.left.value, 6);
+  assertEquals(bst.left?.right?.value, 3);
+  assertEquals(bst.right?.left?.value, 6);
 });
-test("BST: can check if it contains a value", () => {
+Deno.test("BST: can check if it contains a value", () => {
   const bst = new BinarySearchTree<number>(5);
   bst.insert(2);
   bst.insert(3);
@@ -18,7 +18,7 @@ test("BST: can check if it contains a value", () => {
   assertEquals(bst.contains(8), false);
 });
 
-test("BST: should return max value", () => {
+Deno.test("BST: should return max value", () => {
   const bst = new BinarySearchTree<number>(5);
   bst.insert(2);
   bst.insert(3);
@@ -28,9 +28,9 @@ test("BST: should return max value", () => {
   assertEquals(bst.getMax(), 8);
 });
 
-test("BST: should run fn on each element", () => {
-  let a = [];
-  const cb = x => {
+Deno.test("BST: should run fn on each element", () => {
+  let a: number[] = [];
+  const cb = (x: number) => {
     a.push(x);
   };
   const bst = new BinarySearchTree<number>(5);
@@ -49,10 +49,10 @@ test("BST: should run fn on each element", () => {
   assert(a.includes(v5));
 });
 
-test("BST: should print elements in order", () => {
-  let a = [];
+Deno.test("BST: should print elements in order", () => {
+  let a: number[] = [];
   const log = console.log;
-  console.log = x => {
+  console.log = (x: any) => {
     a.push(x);
   };
   const bst = new BinarySearchTree<number>(1);
@@ -68,10 +68,10 @@ test("BST: should print elements in order", () => {
   assertEquals(a.join(""), "12345678");
 });
 
-test("BST: should print elements breadth first", () => {
-  let a = [];
+Deno.test("BST: should print elements breadth first", () => {
+  let a: number[] = [];
   const log = console.log;
-  console.log = x => {
+  console.log = (x: any) => {
     a.push(x);
   };
   const bst = new BinarySearchTree<number>(1);
@@ -87,10 +87,10 @@ test("BST: should print elements breadth first", () => {
   assertEquals(a.join(""), "18537246");
 });
 
-test("BST: should print elements depth first", () => {
-  let a = [];
+Deno.test("BST: should print elements depth first", () => {
+  let a: number[] = [];
   const log = console.log;
-  console.log = x => {
+  console.log = (x: any) => {
     a.push(x);
   };
   const bst = new BinarySearchTree<number>(1);

@@ -1,6 +1,6 @@
 type SortFunction<S> = (data1: S, data2: S) => boolean;
 export class LinkedList<T> {
-  head: Node<T>;
+  head?: Node<T>;
 
   insertHead(data: T) {
     if (!this.head) {
@@ -48,7 +48,7 @@ export class LinkedList<T> {
   deleteNode(position: number) {
     let index = 1;
     let current = this.head;
-    while (current.next) {
+    while (current?.next) {
       if (index === position) {
         current.next = current.next.next;
       }
@@ -62,7 +62,7 @@ export class LinkedList<T> {
     let pointer1 = this.head;
     let index = 0;
     let pointer2;
-    while (pointer1.next) {
+    while (pointer1?.next) {
       if (index === position + 1) {
         pointer2 = this.head;
       }
@@ -73,7 +73,9 @@ export class LinkedList<T> {
       index++;
     }
     // delete node
-    pointer2.next = pointer2.next.next;
+    if (pointer2) {
+      pointer2.next = pointer2.next?.next;
+    }
   }
 
   // apply fn to every node, mutating the nodes
@@ -104,7 +106,7 @@ export class LinkedList<T> {
 
   reverse() {
     let current = this.head;
-    let prevNode: Node<T>;
+    let prevNode;
     while (current) {
       let temp = current.next;
       current.next = prevNode;
@@ -119,8 +121,9 @@ export class LinkedList<T> {
     let current2 = list.head;
     while (current1 && current2) {
       if (current1.data !== current2.data) return false;
-      if (current1.next && !current2.next && !current1.next && current2.next)
+      if (current1.next && !current2.next && !current1.next && current2.next) {
         return false;
+      }
       current1 = current1.next;
       current2 = current2.next;
     }

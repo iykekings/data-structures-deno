@@ -4,7 +4,7 @@ export class BinarySearchTree<T> {
   constructor(
     public value: T,
     public left?: BinarySearchTree<T>,
-    public right?: BinarySearchTree<T>
+    public right?: BinarySearchTree<T>,
   ) {}
 
   insert(value: T) {
@@ -23,14 +23,14 @@ export class BinarySearchTree<T> {
     }
   }
 
-  contains(value: T) {
+  contains(value: T): boolean {
     if (value === this.value) return true;
     if (value < this.value && this.left) return this.left.contains(value);
     if (value > this.value && this.right) return this.right.contains(value);
     return false;
   }
 
-  getMax() {
+  getMax(): T {
     if (!this.right) return this.value;
     return this.right.getMax();
   }
@@ -56,32 +56,32 @@ export class BinarySearchTree<T> {
   }
 
   bftPrint() {
-      let level = new DllQueue<BinarySearchTree<T>>()
-      level.enqeue(this)
-      while(level.size() > 0) {
-        const c = level.deqeue();
-        if(c.left) {
-          level.enqeue(c.left);
-        }
-        if(c.right) {
-          level.enqeue(c.right)
-        }
-        console.log(c.value)
+    let level = new DllQueue<BinarySearchTree<T>>();
+    level.enqeue(this);
+    while (level.size() > 0) {
+      const c = level.deqeue();
+      if (c?.left) {
+        level.enqeue(c.left);
       }
+      if (c?.right) {
+        level.enqeue(c.right);
+      }
+      console.log(c?.value);
+    }
   }
 
   dftPrint() {
     const level = new DllStack<BinarySearchTree<T>>();
     level.push(this);
-    while(level.size() > 0) {
+    while (level.size() > 0) {
       const c = level.pop();
-      if(c.left) {
-        level.push(c.left)
+      if (c?.left) {
+        level.push(c.left);
       }
-      if(c.right) {
-        level.push(c.right)
+      if (c?.right) {
+        level.push(c.right);
       }
-      console.log(c.value)
+      console.log(c?.value);
     }
   }
 }
